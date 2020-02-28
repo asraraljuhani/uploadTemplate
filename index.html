@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>upload</title>
+  </head>
+  <body>
+    <input type="file" id="image-file">
+    <button type="button" name="upload" onclick="upload()" >upload</button>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+function upload(){
+  const formData = new FormData();
+  let file = document.getElementById("image-file").files[0];
+  formData.append('file', file);
+  console.log(formData);
+
+axios.post("http://localhost:8000/uploadDB", formData, {
+}).then(res => { // then print response status
+  console.log(res.statusText);
+}).catch((error) => {
+  console.log("erooooorrrr!");
+});
+}
+
+</script>
+  </body>
+</html>
